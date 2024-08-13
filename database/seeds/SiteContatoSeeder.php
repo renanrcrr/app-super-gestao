@@ -12,12 +12,14 @@ class SiteContatoSeeder extends Seeder
      */
     public function run()
     {
-        $contato = new SiteContato();
-        $contato->nome = 'Sistema SG';
-        $contato->telefone = '996655223355';
-        $contato->email = 'contato@sistemagb.com.br';
-        $contato->motivo_contato = 1;
-        $contato->mensagem = 'Seja bem-vindo ao sistema SG';
-        $contato->save();
+        // $contato = new SiteContato();
+        // $contato->nome = 'Sistema SG';
+        // $contato->telefone = '996655223355';
+        // $contato->email = 'contato@sistemagb.com.br';
+        // $contato->motivo_contato = 1;
+        // $contato->mensagem = 'Seja bem-vindo ao sistema SG';
+        // $contato->save();
+
+        factory(SiteContato::class, 100)->create();
     }
 }
