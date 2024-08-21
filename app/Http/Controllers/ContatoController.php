@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 class ContatoController extends Controller
 {
-    function contato() {
-        // dd($_POST);
+    function contato(Request $request) {
+        echo '<pre>';
+        print_r($request->all());
+        echo '</pre>';
         return view('site.contato', ['titulo' => 'Contato (teste)']);
     }
 }
