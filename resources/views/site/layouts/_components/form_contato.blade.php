@@ -10,7 +10,13 @@
         <option value="2" {{ old('motivo_contato') == 2 ? 'selected' : '' }}>Elogio</option>
         <option value="3" {{ old('motivo_contato') == 3 ? 'selected' : '' }}>Reclamação</option>
     </select>
-    <textarea name="mensagem" placeholder="Preencha aqui a sua mensagem" class="{{ $classe }}">{{ old('mensagem') }}</textarea>
+    <textarea name="mensagem" placeholder="Preencha aqui a sua mensagem" class="{{ $classe }}">
+        @if (old('mensagem') != '')
+            {{ old('mensagem') }}
+        @else
+            Preencha aqui sua mensagem
+        @endif
+    </textarea>
 
     <br>
     <button type="submit" class="{{ $classe }}">ENVIAR</button>
