@@ -17,7 +17,8 @@ class ContatoController extends Controller
 
     function salvar(Request $request) {
         $request->validate([
-            'nome' => 'required|min:3|max:40',
+            # With unique, Laravel uses the "nome" from the input as a parameter to determine the column in the table
+            'nome' => 'required|min:3|max:40|unique:site_contatos', 
             'telefone' => 'required',
             'email' => 'email',
             'motivo_contatos_id' => 'required',
