@@ -16,12 +16,13 @@ class LogAcessoMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // return $next($request);
         $ip = $request->server->get('REMOTE_ADDR');
         $rota = $request->getRequestUri();
-
+        
         LogAcesso::create(['log' => "IP $ip requisitou a rora $rota"]);
+        
+        return $next($request);
 
-        return Response('Hey chegou no middleware, mas não adiante!');
+        // return Response('Hey chegou no middleware, mas não adiante!');
     }
 }
