@@ -15,23 +15,12 @@ class AutenticacaoMiddleware
      */
     public function handle($request, Closure $next, $metodo_autenticacao, $perfil)
     {
-        echo $metodo_autenticacao.' - '.$perfil.'<br>';
+        session_start();
 
-        if($metodo_autenticacao == 'padrao'){
-            echo 'Verificar o usuário e senha no banco de dados'.$perfil.'<br>';
-        }
-        if($metodo_autenticacao == 'ldap'){
-            echo 'Verificar o usuário e senha no AD'.$perfil.'<br>';
-        }
-        if($perfil == 'visitante') {
-            echo 'Exibir apenas alguns visitantes';
-        } else {
-            echo 'Carregar o perfil no banco de dados';
-        }
-        if(false){
+        if(isset($_SESSION['email']) && $_SESSION['email'] != '') {
             return $next($request);
         } else {
-            return Response('Hey chegou no middleware autenticacao, mas não adiante!');
+            return redirect()->route('site.login', ['error' => 2]);
         }
     }
 }
